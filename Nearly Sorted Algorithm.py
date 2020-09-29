@@ -23,6 +23,7 @@ Output:
 1 2 3
 2 3 6 8 12 56
 """
+" This is  done in o(nlogn) 
 t=int(input())
 for i in range(t):
     x,y=input().split()
@@ -32,4 +33,23 @@ for i in range(t):
     lst=sorted(lst)
     for j in lst:
         print(j , end=' ')
+    print("")
+
+" this solution done in o(nlogk) using min heap
+from queue import PriorityQueue
+
+t=int(input())
+for i in range(t):
+    n,k=input().split()
+    n=int(n)
+    k=int(k)
+    lst=[int(x) for x in input().split()]
+    q=PriorityQueue()
+    for j in range(0,k):
+        q.put(lst[j])
+    for j in range(k,len(lst)):
+        print(q.get(),end=" ")
+        q.put(lst[j])
+    while not q.empty():
+        print(q.get(),end=' ')
     print("")
